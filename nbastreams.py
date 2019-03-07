@@ -57,3 +57,4 @@ if len(game_threads) != 0:
     
 else:
     print("No NBA games on at the moment. Try again later.")
+    input("Press any key to exit...")
