@@ -11,7 +11,8 @@ cities = ['atlanta', 'boston', 'brooklyn', 'charlotte', 'chicago', 'cleveland', 
           'indiana', 'los_angeles', 'la', 'mepmhis', 'minnesota', 'new_orleans', 'new_york', 'miami', 'milwaukee', 'oklahoma_city',
           'sacramento','san_antonio', 'toronto', 'utah', 'orlando', 'philadelphia', 'phoenix', 'portland', 'washington']
 
-
+print("Loading...")
+print()
 http = httplib2.Http()
 url = 'https://www.reddit.com/r/nbastreams/'
 status, response = http.request(url)
