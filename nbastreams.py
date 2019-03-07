@@ -33,10 +33,10 @@ if len(game_threads) != 0:
     for i in range(len(game_threads)):
         old = game_threads[i]
         new = old.split("thread_",1)[1]
-        new = new.replace('_', ' ')
-        new = new.replace('/', ' ')
+        new = new.replace('_', ' ').replace('/', ' ')
         new = new.title()
-        print(str(i) + ": " + new)
+        game = ''.join([i for i in new if not i.isdigit()])
+        print(str(i) + ": " + game)
 
     game_thread_choice = int(input("Which game? "))
 
