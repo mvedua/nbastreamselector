@@ -90,6 +90,12 @@ def get_ncaa_bb_streams(reddit):
             if 'http' in url:
                 urls_to_watch.append(url)
 
+    if len(urls_to_watch) == 0:
+        for comment in top_level_comments:
+            if 'SD' in comment.body:
+                url = get_stream_url(comment)
+                if 'http' in url:
+                    urls_to_watch.append(url)
     print()
     if len(urls_to_watch) == 0:
         return 0    # Could not load any streams from the game user selected
@@ -142,7 +148,7 @@ def get_subreddit_posts(subreddit, sport):
         to_replace = 'Game thread: '
 
     for submission in subreddit.hot(limit=20):
-        if 'game_thread' in submission.url and submission.url not in game_threads:
+        if 'game_thread' in submission.url and submission.url not in game_threads and 'bot' not in submission.title:
             game_threads.append(submission.url)
             thread_ids.append(submission.id)
             titles.append(submission.title.replace(to_replace, ''))
