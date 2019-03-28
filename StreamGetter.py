@@ -1,3 +1,6 @@
+"""
+Functions that will open the desired sport's stream in your browser
+"""
 import webbrowser
 import StreamHelpers
 
