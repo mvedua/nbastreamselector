@@ -6,15 +6,24 @@ And open it in a new browser tab automatically
 """
 
 import StreamGetter
+import StreamHelpers
 import praw
+import json
 
 
 def main():
-    reddit = praw.Reddit(client_id='UhpoGXrFBCU1Mg',
-                         client_secret='Hm-aoEziRlyilVKDDLca5pWT-Kw',
-                         user_agent='streamselector agent')
+
+    with open('keys.json') as json_file:
+        data = json.load(json_file)
+    client_id = data.get('client_id')
+    client_secret = data.get('client_secret')
+    agent = data.get('user_agent')
+
+    reddit = praw.Reddit(client_id=client_id,
+                         client_secret=client_secret,
+                         user_agent=agent)
     while True:
-        choice = StreamGetter.get_sport()
+        choice = StreamHelpers.get_sport()
         if choice == -1:
             break
         if choice == 0:

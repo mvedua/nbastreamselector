@@ -116,13 +116,20 @@ def get_mlb_streams(reddit):
     top_level_comments = StreamHelpers.get_comments(reddit, thread_ids, game_thread_choice)
 
     print()
-    sportsstatsme_url = ''
+    mlbstreams2_url = ''
     for comment in top_level_comments:
-        if comment.author == 'sportsstatsme':
-            sportsstatsme_url = StreamHelpers.get_stream_url(comment)
+        if comment.author == 'mlbstreams2':
+            StreamHelpers.print_titles(["Home", "Away"])
+            home_or_away = StreamHelpers.get_game_thread_choice(2)
+            first_par, second_par = comment.body.index('('), comment.body.index(')')
+            if home_or_away == 0:
+                mlbstreams2_url = comment.body[first_par + 1: second_par]
+            else:
+                third_par, fourth_par = comment.body.index('(', first_par + 1), comment.body.index(')', second_par + 1)
+                mlbstreams2_url = comment.body[third_par + 1: fourth_par]
 
-    if sportsstatsme_url != '':
-        webbrowser.open_new_tab(sportsstatsme_url)
+    if mlbstreams2_url != '':
+        webbrowser.open_new_tab(mlbstreams2_url)
         return 1
     else:
         urls_to_watch = StreamHelpers.get_urls_to_watch(top_level_comments)
