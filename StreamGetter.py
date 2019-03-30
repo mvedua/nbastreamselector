@@ -77,14 +77,27 @@ def get_ncaa_bb_streams(reddit):
         return 100
 
     top_level_comments = StreamHelpers.get_comments(reddit, thread_ids, game_thread_choice)
-    urls_to_watch = StreamHelpers.get_urls_to_watch(top_level_comments)
+
+    grandmastreams_url = ''
+    for comment in top_level_comments:
+        if comment.author == 'GrandmaStreamsbot':
+            first_par, second_par = comment.body.index('('), comment.body.index(')')
+            third_par, fourth_par = comment.body.index('(', first_par + 1), comment.body.index(')', second_par + 1)
+            grandmastreams_url = comment.body[third_par + 1: fourth_par]
+
+    if grandmastreams_url != '':
+        webbrowser.open_new_tab(grandmastreams_url)
+        return 1
 
     print()
-    if len(urls_to_watch) == 0:
+    if grandmastreams_url == '' == 0:
         return 0  # Could not load any streams from the game user selected
-    else:
-        webbrowser.open_new_tab(urls_to_watch[0])
-        return 1  # Loaded selected stream
+        urls_to_watch = StreamHelpers.get_urls_to_watch(top_level_comments)
+        if len(urls_to_watch) == 0:
+            return 0
+        else:
+            webbrowser.open_new_tab(urls_to_watch[0])
+            return 1  # Loaded selected stream
 
 
 def get_mlb_streams(reddit):
@@ -116,20 +129,21 @@ def get_mlb_streams(reddit):
     top_level_comments = StreamHelpers.get_comments(reddit, thread_ids, game_thread_choice)
 
     print()
-    mlbstreams2_url = ''
+    ekosport_url = ''
+
     for comment in top_level_comments:
-        if comment.author == 'mlbstreams2':
+        if comment.author == 'EkoSport':
             StreamHelpers.print_titles(["Home", "Away"])
             home_or_away = StreamHelpers.get_game_thread_choice(2)
             first_par, second_par = comment.body.index('('), comment.body.index(')')
             if home_or_away == 0:
-                mlbstreams2_url = comment.body[first_par + 1: second_par]
+                ekosport_url = comment.body[first_par + 1: second_par]
             else:
                 third_par, fourth_par = comment.body.index('(', first_par + 1), comment.body.index(')', second_par + 1)
-                mlbstreams2_url = comment.body[third_par + 1: fourth_par]
+                ekosport_url = comment.body[third_par + 1: fourth_par]
 
-    if mlbstreams2_url != '':
-        webbrowser.open_new_tab(mlbstreams2_url)
+    if ekosport_url != '':
+        webbrowser.open_new_tab(ekosport_url)
         return 1
     else:
         urls_to_watch = StreamHelpers.get_urls_to_watch(top_level_comments)

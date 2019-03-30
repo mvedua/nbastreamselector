@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="091cba23-1a3a-431a-a312-aa5481e6bc42" name="Default Changelist" comment="">
+    <list default="true" id="091cba23-1a3a-431a-a312-aa5481e6bc42" name="Default Changelist" comment="Split functions into different files to have similar functions with each other">
       <change afterPath="$PROJECT_DIR$/keys.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StreamGetter.py" beforeDir="false" afterPath="$PROJECT_DIR$/StreamGetter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/streamselector.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamselector.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,15 +14,15 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/nbastreamselector$nbastreams.coverage" NAME="nbastreams Coverage Results" MODIFIED="1553888977179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/nbastreamselector$streamselector.coverage" NAME="streamselector Coverage Results" MODIFIED="1553895352040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nbastreamselector$streamselector.coverage" NAME="streamselector Coverage Results" MODIFIED="1553912856043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/streamselector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+            <state relative-caret-position="578">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
               <folding>
                 <element signature="e#229#248#0" expanded="true" />
               </folding>
@@ -35,16 +34,16 @@
         <entry file="file://$PROJECT_DIR$/keys.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StreamGetter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="129" selection-start-line="129" selection-end-line="129" />
+            <state relative-caret-position="450">
+              <caret line="85" column="72" selection-start-line="85" selection-start-column="72" selection-end-line="85" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -52,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StreamHelpers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1030">
-              <caret line="125" column="77" lean-forward="true" selection-start-line="125" selection-start-column="11" selection-end-line="125" selection-end-column="77" />
+            <state relative-caret-position="-1163">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -82,14 +81,14 @@
         <option value="$PROJECT_DIR$/nbastreams.py" />
         <option value="$PROJECT_DIR$/StreamHelpers.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/StreamGetter.py" />
         <option value="$PROJECT_DIR$/keys.json" />
         <option value="$PROJECT_DIR$/streamselector.py" />
+        <option value="$PROJECT_DIR$/StreamGetter.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
+    <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1087" />
   </component>
@@ -98,7 +97,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -110,6 +108,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -198,7 +197,9 @@
       <workItem from="1552264835680" duration="829000" />
       <workItem from="1552265779629" duration="573000" />
       <workItem from="1553804298061" duration="3195000" />
-      <workItem from="1553887945898" duration="2793000" />
+      <workItem from="1553887945898" duration="3293000" />
+      <workItem from="1553900101202" duration="2264000" />
+      <workItem from="1553912318331" duration="543000" />
     </task>
     <task id="LOCAL-00001" summary="Added /r/mlbstreams to the list of subreddits supported">
       <created>1553806046893</created>
@@ -214,23 +215,29 @@
       <option name="project" value="LOCAL" />
       <updated>1553807086956</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added Home and Away option for MLB streams">
+      <created>1553895451501</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1553895451501</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14772000" />
+    <option name="totallyTimeSpent" value="18079000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1087" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="974" height="1087" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25273523" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26367614" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26519915" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39937106" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -253,7 +260,24 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added /r/mlbstreams to the list of subreddits supported" />
     <MESSAGE value="Split functions into different files to have similar functions with each other" />
-    <option name="LAST_COMMIT_MESSAGE" value="Split functions into different files to have similar functions with each other" />
+    <MESSAGE value="Added Home and Away option for MLB streams" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Home and Away option for MLB streams" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/streamselector.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="top_level_comments" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/streamselector.spec" />
@@ -267,34 +291,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/streamselector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+          <folding>
+            <element signature="e#229#248#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/keys.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/praw/models/helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2686">
+          <caret line="163" selection-start-line="163" selection-end-line="163" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/praw/models/reddit/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/praw/models/listing/mixins/subreddit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/StreamHelpers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1030">
-          <caret line="125" column="77" lean-forward="true" selection-start-line="125" selection-start-column="11" selection-end-line="125" selection-end-column="77" />
+        <state relative-caret-position="-1163">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/praw/models/reddit/subreddit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="400" selection-start-line="400" selection-end-line="400" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="1740" selection-start-line="1740" selection-end-line="1740" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/StreamGetter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/streamselector.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-          <folding>
-            <element signature="e#229#248#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="450">
+          <caret line="85" column="72" selection-start-line="85" selection-start-column="72" selection-end-line="85" selection-end-column="72" />
         </state>
       </provider>
     </entry>
