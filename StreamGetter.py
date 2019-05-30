@@ -10,7 +10,7 @@ def get_sport():
     Gets the sport the user wants to watch
     :return: Number of sport in list
     """
-    sports = ["NBA Basketball", "NCAA Basketball", 'Major League Baseball']
+    sports = ["NBA Basketball", "NCAA Basketball", 'Major League Baseball', "NHL Hockey"]
     for i in range(len(sports)):
         print(str(i) + ": " + sports[i])
 
@@ -115,7 +115,7 @@ def get_ncaa_bb_streams(reddit):
 
 def get_mlb_streams(reddit):
     """
-    Loads NCAA Basketball streams
+    Loads MLB streams
     :param reddit: Reddit instance
     :return: -1 for no Game Threads, 0 for No streams in game thread, 1 for Game Thread with stream(s)
     """
@@ -154,7 +154,52 @@ def get_mlb_streams(reddit):
             return 0  # Could not load any streams from the game user selected
         else:
             webbrowser.open_new_tab(urls_to_watch[0])
-    
+
+    return 1  # Loaded selected stream
+
+
+def get_nhl_streams(reddit):
+    """
+    Loads NHL streams
+    :param reddit: Reddit instance
+    :return: -1 for no Game Threads, 0 for No streams in game thread, 1 for Game Thread with stream(s)
+    """
+    print("Loading...\n")
+
+    # Load instance of mlbstreams subreddit
+    subreddit = reddit.subreddit('nhlstreams')
+
+    # Get list of game threads, thread ids, and titles from /r/ncaaBBallStreams
+    game_threads, thread_ids, titles = StreamHelpers.get_subreddit_posts(subreddit, 'nhl')
+
+    if len(game_threads) != 0:
+        # Print titles of game threads for user to select from
+        StreamHelpers.print_titles(titles)
+    else:
+        return -1  # Could not load any game threads
+
+    game_thread_choice = StreamHelpers.get_game_thread_choice(len(game_threads))  # Game user selected
+    if game_thread_choice == -1:
+        print()
+        return 100
+
+    top_level_comments = StreamHelpers.get_comments(reddit, thread_ids, game_thread_choice)
+
+    print()
+    streamingmpi_url = ''
+    for comment in top_level_comments:
+        if comment.author == 'streamingmpi':
+            streamingmpi_url = StreamHelpers.get_stream_url(comment)
+
+    if streamingmpi_url != '':
+        webbrowser.open_new_tab(streamingmpi_url)
+    else:
+        urls_to_watch = StreamHelpers.get_urls_to_watch(top_level_comments)
+        if len(urls_to_watch) == 0:
+            return 0  # Could not load any streams from the game user selected
+        else:
+            webbrowser.open_new_tab(urls_to_watch[0])
+
     return 1  # Loaded selected stream
 
 

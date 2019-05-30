@@ -1,6 +1,6 @@
 """
 Stream selector
-This script will load all the game threads off of /r/nbstreams or /r/ncaaBBstreams or /r/mlbstreams,
+This script will load all the game threads off of /r/nbstreams, /r/ncaaBBstreams, /r/mlbstreams, /r/nhlstreams
 Give you the choice to pick the game you want to watch,
 And open it in a new browser tab automatically
 """
@@ -13,7 +13,7 @@ def main():
     message = ("|-------------------------------------------------|\n"
                "|                 streamselector                  |\n"
                "|                                                 |\n"
-               "|  Watch live game streams for MLB, NBA, NCAA BB  |\n"
+               "|  Watch live games for MLB, NBA, NCAA BB, & NHL  |\n"
                "|-------------------------------------------------|\n"
      )
 
@@ -37,6 +37,10 @@ def main():
             loaded = StreamGetter.get_mlb_streams(reddit)
             if loaded <= 0:
                 StreamGetter.display_error("MLB", loaded)
+        elif choice == 3:
+            loaded = StreamGetter.get_nhl_streams(reddit)
+            if loaded <= 0:
+                StreamGetter.display_error("NHL", loaded)
 
 
 if __name__ == '__main__':

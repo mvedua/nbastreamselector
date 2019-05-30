@@ -24,7 +24,7 @@ def get_subreddit_posts(subreddit, sport):
     thread_ids = []
     titles = []
 
-    if sport in ['mlb', 'nba']:
+    if sport in ['mlb', 'nba', 'nhl']:
         to_replace = 'Game Thread: '
     else:
         to_replace = 'Game thread: '
