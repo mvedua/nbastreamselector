@@ -1,6 +1,6 @@
 # StreamSelector
 
-StreamSelector is a python3 script that allows you to watch MLB, NCAA BB, or NBA games without any
+StreamSelector is a python3 script that allows you to watch MLB, NCAA BB, NBA, or NHL games without any
 subscriptions. This script uses Reddit's API to gather and pick a stream for you to watch.
 
 ## Getting Started
