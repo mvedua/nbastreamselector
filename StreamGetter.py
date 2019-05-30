@@ -5,14 +5,35 @@ import webbrowser
 import StreamHelpers
 
 
+def get_sport():
+    """
+    Gets the sport the user wants to watch
+    :return: Number of sport in list
+    """
+    sports = ["NBA Basketball", "NCAA Basketball", 'Major League Baseball']
+    for i in range(len(sports)):
+        print(str(i) + ": " + sports[i])
+
+    while True:
+        choice = input("Choice ([Enter] to exit): ")
+        if choice.isdigit():
+            if int(choice) in range(len(sports)):
+                return int(choice)
+            else:
+                print("Invalid choice. Please enter again.")
+        elif choice == '':
+            return -1
+        else:
+            print("Please enter a number in the list.")
+
+
 def get_nba_streams(reddit):
     """
     Finds and loads the NBA stream you want to watch
     :param reddit: Reddit instance
     :return: 1 if loaded /u/buffstreams url, 0 if could not load /u/buffstreams url, 0 if no games
     """
-    print("Loading...")
-    print()
+    print("Loading...\n")
 
     # Load instance of nbastreams subreddit
     subreddit = reddit.subreddit('nbastreams')
@@ -25,6 +46,8 @@ def get_nba_streams(reddit):
         StreamHelpers.print_titles(titles)
 
         game_thread_choice = StreamHelpers.get_game_thread_choice(len(game_threads))  # Game user selected
+        
+        print()
         if game_thread_choice == -1:
             print()
             return 100
@@ -44,8 +67,12 @@ def get_nba_streams(reddit):
         elif rippledotis_url != '':
             webbrowser.open_new_tab(rippledotis_url)
         else:
-            return 0  # Loaded game thread but not buffstreams or rippledotis url
-        return 1  # Successfully loaded /u/rippledotis or /u/buffstreams url
+            urls_to_watch = StreamHelpers.get_urls_to_watch(top_level_comments)
+            if len(urls_to_watch) == 0:
+                return 0  # Could not load any streams from the game user selected
+            else:
+                webbrowser.open_new_tab(urls_to_watch[0])
+        return 1  # Successfully loaded /u/rippledotis or /u/buffstreams url or other
     else:
         return -1  # Could not load any game threads
 
@@ -56,7 +83,7 @@ def get_ncaa_bb_streams(reddit):
     :param reddit: Reddit instance
     :return: -1 for no Game Threads, 0 for No streams in game thread, 1 for Game Thread with stream(s)
     """
-    print("Loading...")
+    print("Loading...\n")
 
     # Load instance of ncaaBBallStreams subreddit
     subreddit = reddit.subreddit('ncaaBBallStreams')
@@ -64,7 +91,6 @@ def get_ncaa_bb_streams(reddit):
     # Get list of game threads, thread ids, and titles from /r/ncaaBBallStreams
     game_threads, thread_ids, titles = StreamHelpers.get_subreddit_posts(subreddit, 'ncaabb')
 
-    print()
     if len(game_threads) != 0:
         # Print titles of game threads for user to select from
         StreamHelpers.print_titles(titles)
@@ -77,27 +103,14 @@ def get_ncaa_bb_streams(reddit):
         return 100
 
     top_level_comments = StreamHelpers.get_comments(reddit, thread_ids, game_thread_choice)
-
-    grandmastreams_url = ''
-    for comment in top_level_comments:
-        if comment.author == 'GrandmaStreamsbot':
-            first_par, second_par = comment.body.index('('), comment.body.index(')')
-            third_par, fourth_par = comment.body.index('(', first_par + 1), comment.body.index(')', second_par + 1)
-            grandmastreams_url = comment.body[third_par + 1: fourth_par]
-
-    if grandmastreams_url != '':
-        webbrowser.open_new_tab(grandmastreams_url)
-        return 1
+    urls_to_watch = StreamHelpers.get_urls_to_watch(top_level_comments)
 
     print()
-    if grandmastreams_url == '' == 0:
+    if len(urls_to_watch) == 0:
         return 0  # Could not load any streams from the game user selected
-        urls_to_watch = StreamHelpers.get_urls_to_watch(top_level_comments)
-        if len(urls_to_watch) == 0:
-            return 0
-        else:
-            webbrowser.open_new_tab(urls_to_watch[0])
-            return 1  # Loaded selected stream
+    else:
+        webbrowser.open_new_tab(urls_to_watch[0])
+        return 1  # Loaded selected stream
 
 
 def get_mlb_streams(reddit):
@@ -106,7 +119,7 @@ def get_mlb_streams(reddit):
     :param reddit: Reddit instance
     :return: -1 for no Game Threads, 0 for No streams in game thread, 1 for Game Thread with stream(s)
     """
-    print("Loading...")
+    print("Loading...\n")
 
     # Load instance of mlbstreams subreddit
     subreddit = reddit.subreddit('mlbstreams')
@@ -114,7 +127,6 @@ def get_mlb_streams(reddit):
     # Get list of game threads, thread ids, and titles from /r/ncaaBBallStreams
     game_threads, thread_ids, titles = StreamHelpers.get_subreddit_posts(subreddit, 'mlb')
 
-    print()
     if len(game_threads) != 0:
         # Print titles of game threads for user to select from
         StreamHelpers.print_titles(titles)
@@ -129,29 +141,21 @@ def get_mlb_streams(reddit):
     top_level_comments = StreamHelpers.get_comments(reddit, thread_ids, game_thread_choice)
 
     print()
-    ekosport_url = ''
-
+    sportsstatsme_url = ''
     for comment in top_level_comments:
-        if comment.author == 'EkoSport':
-            StreamHelpers.print_titles(["Home", "Away"])
-            home_or_away = StreamHelpers.get_game_thread_choice(2)
-            first_par, second_par = comment.body.index('('), comment.body.index(')')
-            if home_or_away == 0:
-                ekosport_url = comment.body[first_par + 1: second_par]
-            else:
-                third_par, fourth_par = comment.body.index('(', first_par + 1), comment.body.index(')', second_par + 1)
-                ekosport_url = comment.body[third_par + 1: fourth_par]
+        if comment.author == 'sportsstatsme':
+            sportsstatsme_url = StreamHelpers.get_stream_url(comment)
 
-    if ekosport_url != '':
-        webbrowser.open_new_tab(ekosport_url)
-        return 1
+    if sportsstatsme_url != '':
+        webbrowser.open_new_tab(sportsstatsme_url)
     else:
         urls_to_watch = StreamHelpers.get_urls_to_watch(top_level_comments)
         if len(urls_to_watch) == 0:
             return 0  # Could not load any streams from the game user selected
         else:
             webbrowser.open_new_tab(urls_to_watch[0])
-            return 1  # Loaded selected stream
+    
+    return 1  # Loaded selected stream
 
 
 def display_error(sport, error):
@@ -162,6 +166,6 @@ def display_error(sport, error):
     :return: None
     """
     if error == -1:
-        print("No {} games on at this moment. Try again later.".format(sport))
+        print("No {} games on at this moment. Try again later.\n".format(sport))
     elif error == 0:
-        print("The {} game you selected has no streams available.".format(sport))
+        print("The {} game you selected has no streams available.\n".format(sport))

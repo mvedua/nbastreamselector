@@ -6,24 +6,23 @@ And open it in a new browser tab automatically
 """
 
 import StreamGetter
-import StreamHelpers
 import praw
-import json
 
 
 def main():
+    message = ("|-------------------------------------------------|\n"
+               "|                 streamselector                  |\n"
+               "|                                                 |\n"
+               "|  Watch live game streams for MLB, NBA, NCAA BB  |\n"
+               "|-------------------------------------------------|\n"
+     )
 
-    with open('keys.json') as json_file:
-        data = json.load(json_file)
-    client_id = data.get('client_id')
-    client_secret = data.get('client_secret')
-    agent = data.get('user_agent')
-
-    reddit = praw.Reddit(client_id=client_id,
-                         client_secret=client_secret,
-                         user_agent=agent)
+    reddit = praw.Reddit(client_id='UhpoGXrFBCU1Mg',
+                         client_secret='Hm-aoEziRlyilVKDDLca5pWT-Kw',
+                         user_agent='streamselector agent')
+    print(message)
     while True:
-        choice = StreamHelpers.get_sport()
+        choice = StreamGetter.get_sport()
         if choice == -1:
             break
         if choice == 0:

@@ -3,27 +3,6 @@ Functions that help StreamGetter open the streams
 """
 
 
-def get_sport():
-    """
-    Gets the sport the user wants to watch
-    :return: Number of sport in list
-    """
-    sports = ["NBA Basketball", "NCAA Basketball", 'Major League Baseball']
-    for i in range(len(sports)):
-        print(str(i) + ": " + sports[i])
-
-    while True:
-        choice = input("Choice ([Enter] to exit): ")
-        if choice.isdigit():
-            if int(choice) in range(len(sports)):
-                return int(choice)
-            else:
-                print("Invalid choice. Please enter again.")
-        elif choice == '':
-            return -1
-        else:
-            print("Please enter a number in the list.")
-
 def print_titles(thread_titles):
     """
     Prints out list of game threads
