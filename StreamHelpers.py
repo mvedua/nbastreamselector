@@ -103,3 +103,16 @@ def get_stream_url(comment):
     :return: url of game stream
     """
     return comment.body[comment.body.index('(') + 1: comment.body.index(')')]
+
+
+def get_priority_url(streamer, top_level_comments):
+    """
+    Finds the stream for a priority streamer
+    :param streamer: streamer name
+    :param top_level_comments: comments from game thread
+    :return: url string
+    """
+    for comment in top_level_comments:
+        if comment.author == streamer:
+            return get_stream_url(comment)
+    return ''

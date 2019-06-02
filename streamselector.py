@@ -6,7 +6,6 @@ And open it in a new browser tab automatically
 """
 
 import StreamGetter
-import praw
 
 
 def main():
@@ -17,30 +16,19 @@ def main():
                "|-------------------------------------------------|\n"
      )
 
-    reddit = praw.Reddit(client_id='UhpoGXrFBCU1Mg',
-                         client_secret='Hm-aoEziRlyilVKDDLca5pWT-Kw',
-                         user_agent='streamselector agent')
     print(message)
     while True:
         choice = StreamGetter.get_sport()
         if choice == -1:
             break
         if choice == 0:
-            loaded = StreamGetter.get_nba_streams(reddit)
-            if loaded <= 0:
-                StreamGetter.display_error("NBA", loaded)
+            StreamGetter.open_stream('NBA')
         elif choice == 1:
-            loaded = StreamGetter.get_ncaa_bb_streams(reddit)
-            if loaded <= 0:
-                StreamGetter.display_error("NCAA Basketball", loaded)
+            StreamGetter.open_stream('NCAA Basketball')
         elif choice == 2:
-            loaded = StreamGetter.get_mlb_streams(reddit)
-            if loaded <= 0:
-                StreamGetter.display_error("MLB", loaded)
+            StreamGetter.open_stream('MLB')
         elif choice == 3:
-            loaded = StreamGetter.get_nhl_streams(reddit)
-            if loaded <= 0:
-                StreamGetter.display_error("NHL", loaded)
+            StreamGetter.open_stream('NHL')
 
 
 if __name__ == '__main__':
