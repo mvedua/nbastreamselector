@@ -185,7 +185,6 @@ def get_mlb_streams(reddit):
     sportsstatsme_url = StreamHelpers.get_priority_url('sportsstatme', top_level_comments)
 
     if sportsstatsme_url != '':
-        print(sportsstatsme_url)
         return sportsstatsme_url
     else:
         urls_to_watch = StreamHelpers.get_urls_to_watch(top_level_comments)
